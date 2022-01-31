@@ -1,0 +1,17 @@
+(define (double-naturals)
+    (double-naturals-helper 1 #f)
+)
+
+(define (double-naturals-helper first go-next)
+    (if (eq? go-next #f)
+        (cons-stream first (double-naturals-helper first #t))
+        (cons-stream first (double-naturals-helper (+ 1 first) #f)))
+)
+
+(define (interleave stream1 stream2)
+    (define (helper st1 st2 go-next)
+        (if (= go-next 1)
+            (cons-stream (car st1) (helper (cdr-stream st1) st2 2))
+            (cons-stream (car st2) (helper st1 (cdr-stream st2) 1))))
+    (helper stream1 stream2 1)
+)
