@@ -339,7 +339,7 @@ class WallAnt(Ant):
     food_cost = 4
 
     def __init__(self):
-        self.armor = 4
+        Ant.__init__(self, 4)
 # END Problem 8
 
 
@@ -385,8 +385,8 @@ class HungryAnt(Ant):
     def __init__(self):
         # BEGIN Problem 6
         "*** YOUR CODE HERE ***"
+        Ant.__init__(self, 1)
         self.digesting = 0
-        self.armor = 1
         # END Problem 6
 
     def eat_bee(self, bee):
@@ -419,7 +419,6 @@ class BodyguardAnt(Ant):
     def __init__(self):
         Ant.__init__(self, 2)
         self.ant = None  # The Ant hidden in this bodyguard
-        self.armor = 2
 
     def contain_ant(self, ant):
         # BEGIN Problem 9
@@ -470,7 +469,7 @@ class QueenAnt(ScubaThrower):  # You should change this line
     def __init__(self):
         # BEGIN Problem 13
         "*** YOUR CODE HERE ***"
-        self.armor = 1
+        Ant.__init__(self, 1)
         self.doubled = []
         self.is_true_queen = QueenAnt.is_true_queen
         QueenAnt.is_true_queen = False
